@@ -29,31 +29,24 @@ public class BasicCharacterController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-
-    void FixedUpdate()
+    private void Update()
     {
         //Linecast to our groundcheck gameobject if we hit a layer called "Level" then we're grounded
         grounded = Physics2D.Linecast(groundedCheckStart.position, groundedCheckEnd.position, 1 << LayerMask.NameToLayer("Level"));
         Debug.DrawLine(groundedCheckStart.position, groundedCheckEnd.position, Color.red);
+        if (Input.GetButtonDown("Jump") && grounded == true)
+        {
+            rb.AddForce(new Vector2(0f, jumpForce));
+            Debug.Log("Jumping!");
+        }
 
+    }
+    void FixedUpdate()
+    {
         //Get Player input 
         horizInput = Input.GetAxis("Horizontal");
         //Move Character
         rb.velocity = new Vector2(horizInput * speed * Time.fixedDeltaTime, rb.velocity.y);
-
-        if (Input.GetButtonDown("Jump") && grounded == true)
-        {
-            jumped = true;
-            Debug.Log("Should jump");
-        }
-
-        if (jumped == true)
-        {
-            rb.AddForce(new Vector2(0f, jumpForce));
-            Debug.Log("Jumping!");
-
-            jumped = false;
-        }
 
         // Detect if character sprite needs flipping
         if (horizInput > 0 && !facingRight)
