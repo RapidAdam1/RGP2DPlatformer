@@ -13,7 +13,7 @@ public class BasicCharacterController : MonoBehaviour
 {
     protected bool facingRight = true;
     protected bool jumped;
-
+    protected bool IsCrouching = false;
     public float speed = 5.0f;
     public float jumpForce = 1000;
 
@@ -36,8 +36,13 @@ public class BasicCharacterController : MonoBehaviour
         Debug.DrawLine(groundedCheckStart.position, groundedCheckEnd.position, Color.red);
         if (Input.GetButtonDown("Jump") && grounded == true)
         {
+            jumped = true;
             rb.AddForce(new Vector2(0f, jumpForce));
             Debug.Log("Jumping!");
+        }
+        if (grounded)
+        {
+            jumped = false; 
         }
 
     }
