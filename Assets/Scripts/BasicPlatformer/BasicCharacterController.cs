@@ -18,16 +18,22 @@ public class BasicCharacterController : MonoBehaviour
     public float jumpForce = 1000;
 
     private float horizInput;
+    private Animator anim;
+    private float health = 100;
+
 
     public Transform groundedCheckStart;
     public Transform groundedCheckEnd;
     public bool grounded;
+    public int coinCount;
+    
 
     public Rigidbody2D rb;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponentInChildren<Animator>();
     }
     private void Update()
     {
@@ -37,14 +43,33 @@ public class BasicCharacterController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && grounded == true)
         {
             jumped = true;
+            grounded = false;
+            anim.SetBool("grounded", false);
+            anim.SetBool("jump", true);
             rb.AddForce(new Vector2(0f, jumpForce));
-            Debug.Log("Jumping!");
         }
+        Debug.Log(health);
+
+
         if (grounded)
         {
-            jumped = false; 
+            jumped = false;
+            anim.SetBool("grounded", true);
+            anim.SetBool("jump", false);
         }
 
+        if(horizInput > 0 || horizInput < 0)
+        {
+            anim.SetBool("Move", true);
+        }
+        else
+        {anim.SetBool("Move", false);}
+
+        if(rb.velocity.y < 0 && !grounded)
+        {
+            anim.SetBool("Falling", true);
+        }
+        else { anim.SetBool("Falling", false); }
     }
     void FixedUpdate()
     {
@@ -69,5 +94,27 @@ public class BasicCharacterController : MonoBehaviour
     {
         facingRight = !facingRight;
         transform.Rotate(0, 180, 0);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Coin")
+        {
+            Destroy(collision.gameObject);
+            coinCount++;
+        }        
+        else if (collision.tag == "Spike")
+        {
+            PlayerDamage(10);
+            rb.velocity = new Vector2(rb.velocity.x,0);
+            rb.AddForce(new Vector2(0f, 500));
+            anim.SetBool("jump", true);
+            anim.SetBool("grounded", false);
+        }
+    }
+
+    public void PlayerDamage(int damageinbound)
+    {
+        health -= damageinbound;
     }
 }
