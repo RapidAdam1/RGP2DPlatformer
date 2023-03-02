@@ -42,34 +42,31 @@ public class BasicCharacterController : MonoBehaviour
         Debug.DrawLine(groundedCheckStart.position, groundedCheckEnd.position, Color.red);
         if (Input.GetButtonDown("Jump") && grounded == true)
         {
-            jumped = true;
             grounded = false;
+            jumped = true;
             anim.SetBool("grounded", false);
-            anim.SetBool("jump", true);
+            anim.SetTrigger("Jump");
             rb.AddForce(new Vector2(0f, jumpForce));
         }
-        Debug.Log(health);
-
-
+        
         if (grounded)
         {
             jumped = false;
+            anim.ResetTrigger("Jump");
             anim.SetBool("grounded", true);
-            anim.SetBool("jump", false);
         }
 
-        if(horizInput > 0 || horizInput < 0)
-        {
-            anim.SetBool("Move", true);
-        }
-        else
-        {anim.SetBool("Move", false);}
+        //Walking Anim State
+        if(horizInput > 0 || horizInput < 0) {anim.SetBool("Move", true);}
+        else {anim.SetBool("Move", false);}
 
-        if(rb.velocity.y < 0 && !grounded)
+        anim.SetFloat("VSpeed", rb.velocity.y);
+
+        if (health <= 0)
         {
-            anim.SetBool("Falling", true);
+            anim.SetTrigger("PlayerDead");
         }
-        else { anim.SetBool("Falling", false); }
+
     }
     void FixedUpdate()
     {
@@ -106,10 +103,9 @@ public class BasicCharacterController : MonoBehaviour
         else if (collision.tag == "Spike")
         {
             PlayerDamage(10);
+            anim.SetTrigger("Jump");
             rb.velocity = new Vector2(rb.velocity.x,0);
             rb.AddForce(new Vector2(0f, 500));
-            anim.SetBool("jump", true);
-            anim.SetBool("grounded", false);
         }
     }
 

@@ -12,4 +12,5 @@ public class FollowCam : MonoBehaviour
     {
         transform.position = new Vector3(target.position.x + offset.x, target.position.y + offset.y, offset.z);
 	}
+
 }
