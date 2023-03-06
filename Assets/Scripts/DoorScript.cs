@@ -23,13 +23,16 @@ public class DoorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(AllButtonsActive);
+        
         AllButtonsActive = CheckForButtons();
-        Debug.Log(AllButtonsActive);
 
         if (AllButtonsActive)
         {
             DoorOpen();
+        }
+        else if (!AllButtonsActive)
+        {
+            DoorClose();   
         }
     }
 
