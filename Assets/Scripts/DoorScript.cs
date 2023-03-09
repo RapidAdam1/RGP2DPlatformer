@@ -17,7 +17,6 @@ public class DoorScript : MonoBehaviour
         self = GameObject.Find("Door");
         ChildrenCount = self.transform.childCount;
         doorlock = self.transform.GetChild(ChildrenCount-1).GetComponent<SpriteRenderer>();
-        Debug.Log(ChildrenCount);
     }
 
     // Update is called once per frame

@@ -9,7 +9,7 @@ public class BobMovement : MonoBehaviour
     protected bool jump;
 
     public float maxSpeed = 5.0f;
-    public float maxForce = 365.0f;
+    public float maxForce = 200.0f;
     public float horizInput = 1.0f;
 
     protected SpriteRenderer spriteRenderer;
@@ -36,10 +36,19 @@ public class BobMovement : MonoBehaviour
     void Update()
     {
     }
+
     void OnTriggerExit2D(Collider2D collision)
     {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Level")) 
         {
+            if(horizInput == 1)
+            {
+                horizInput = -1;
+            }
+            else
+            {
+                horizInput = 1;
+            }
             Flip(); 
         }
     }
@@ -54,16 +63,16 @@ public class BobMovement : MonoBehaviour
             }
             else
             {
-                Destroy(collision.gameObject);
+                collision.rigidbody.AddForce(new Vector2 (0, 10));
             }
         }
     }
 
     void FixedUpdate()
     {
-        if(Mathf.Abs(horizInput * (rb.velocity.x)) < maxSpeed)
+
+        if (Mathf.Abs(horizInput * (rb.velocity.x)) < maxSpeed)
         {
-            Debug.Log(horizInput * Vector2.right * maxForce);
             rb.AddForce(horizInput * Vector2.right * maxForce);
         }
 

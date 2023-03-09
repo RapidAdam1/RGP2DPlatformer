@@ -8467,12 +8467,12 @@ PrefabInstance:
     - target: {fileID: 1374944341706138889, guid: aee98987621c7c2459c05f52a0b11a87,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.029
+      value: -24.5
       objectReference: {fileID: 0}
     - target: {fileID: 1374944341706138889, guid: aee98987621c7c2459c05f52a0b11a87,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.026
+      value: 0.99
       objectReference: {fileID: 0}
     - target: {fileID: 1374944341706138889, guid: aee98987621c7c2459c05f52a0b11a87,
         type: 3}
@@ -8514,6 +8514,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1374944341706138890, guid: aee98987621c7c2459c05f52a0b11a87,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 1374944341706138890, guid: aee98987621c7c2459c05f52a0b11a87,
+        type: 3}
+      propertyPath: m_Direction
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1374944341706138891, guid: aee98987621c7c2459c05f52a0b11a87,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 1374944341706138892, guid: aee98987621c7c2459c05f52a0b11a87,
+        type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1374944341706138892, guid: aee98987621c7c2459c05f52a0b11a87,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1374944341706138894, guid: aee98987621c7c2459c05f52a0b11a87,
         type: 3}
       propertyPath: m_Name
@@ -8521,8 +8546,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1538350544036017136, guid: aee98987621c7c2459c05f52a0b11a87,
         type: 3}
+      propertyPath: maxForce
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538350544036017136, guid: aee98987621c7c2459c05f52a0b11a87,
+        type: 3}
+      propertyPath: maxSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538350544036017136, guid: aee98987621c7c2459c05f52a0b11a87,
+        type: 3}
       propertyPath: facingRight
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

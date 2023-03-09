@@ -50,8 +50,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.47}
-  m_Size: {x: 1.17, y: 0.83}
-  m_Direction: 1
+  m_Size: {x: 0.93, y: 0.83}
+  m_Direction: 0
 --- !u!61 &1374944341706138891
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -65,7 +65,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.66, y: 0}
+  m_Offset: {x: 0.69, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -87,7 +87,7 @@ Rigidbody2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1374944341706138894}
   m_BodyType: 0
-  m_Simulated: 0
+  m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -98,7 +98,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &1374944341706138893
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fece5d652095a0a4da3437402d91d4e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  facingRight: 0
-  maxSpeed: 5
-  maxForce: 365
+  facingRight: 1
+  maxSpeed: 1
+  maxForce: 100
   horizInput: 1
