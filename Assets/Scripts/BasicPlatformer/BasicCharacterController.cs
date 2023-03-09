@@ -84,6 +84,8 @@ public class BasicCharacterController : MonoBehaviour
         {
             FlipSprite();
         }
+
+        
     }
 
     // Flip Character Sprite
@@ -99,6 +101,7 @@ public class BasicCharacterController : MonoBehaviour
         {
             Destroy(collision.gameObject);
             coinCount++;
+            UI.Instance.UpdateCoins(coinCount);
         }        
         else if (collision.tag == "Spike")
         {
