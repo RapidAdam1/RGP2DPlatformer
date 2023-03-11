@@ -59,11 +59,12 @@ public class BobMovement : MonoBehaviour
             if(collision.rigidbody.velocity.y < -0.1f)
             {
                 horizInput = 0;
-                Destroy(gameObject, 0.5f);
+                Destroy(gameObject, 0.1f);
+                collision.rigidbody.AddForce(new Vector2(0, 500));
             }
             else
             {
-                collision.rigidbody.AddForce(new Vector2 (0, 10));
+                collision.rigidbody.AddForce(new Vector2 (650, 500));
             }
         }
     }

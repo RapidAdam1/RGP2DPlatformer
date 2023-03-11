@@ -19,7 +19,7 @@ public class BasicCharacterController : MonoBehaviour
 
     private float horizInput;
     private Animator anim;
-    private float health = 100;
+    private int health = 10;
 
 
     public Transform groundedCheckStart;
@@ -105,7 +105,7 @@ public class BasicCharacterController : MonoBehaviour
         }        
         else if (collision.tag == "Spike")
         {
-            PlayerDamage(10);
+            PlayerDamage(1);
             anim.SetTrigger("Jump");
             rb.velocity = new Vector2(rb.velocity.x,0);
             rb.AddForce(new Vector2(0f, 500));
@@ -115,5 +115,6 @@ public class BasicCharacterController : MonoBehaviour
     public void PlayerDamage(int damageinbound)
     {
         health -= damageinbound;
+        UI.Instance.UpdateHealth((int)health);
     }
 }

@@ -4,31 +4,36 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    private int Hearts = 10;
+    private int HeartsCount;
+    private int P_Health = 5;
+    public Sprite HeartFull;
+    public Sprite HeartEmpty;
     // Start is called before the first frame update
     void Start()
     {
-        
+        HeartsCount = transform.childCount;
     }
 
     // Update is called once per frame
     void Update()
     {
-        for(int i = 0; i < 9 ; i++)
+        for(int i = 0; i < HeartsCount ; i++)
         {
-            if (i < Hearts)
+            SpriteRenderer Pic = transform.GetChild(i).GetComponent<SpriteRenderer>();
+            if (i < P_Health)
             {
-                transform.GetChild(i).gameObject.active = false;
+                Pic.sprite = HeartFull;
             }
             else
             {
-                transform.GetChild(i).gameObject.active = true;
+                Pic.sprite = HeartEmpty;
             }
+      
         }
     }
-    public void UpdateHealth(int health)
+    public void UpdateHealth(int INhealth)
     {
-        Hearts = health;
+        P_Health = INhealth;
     }
 
 }
