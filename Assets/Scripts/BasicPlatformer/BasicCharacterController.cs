@@ -20,7 +20,7 @@ public class BasicCharacterController : MonoBehaviour
     private float horizInput;
     private Animator anim;
     private int health = 10;
-
+    private bool IsDead;
 
     public Transform groundedCheckStart;
     public Transform groundedCheckEnd;
@@ -62,10 +62,7 @@ public class BasicCharacterController : MonoBehaviour
 
         anim.SetFloat("VSpeed", rb.velocity.y);
 
-        if (health <= 0)
-        {
-            anim.SetTrigger("PlayerDead");
-        }
+
 
     }
     void FixedUpdate()
@@ -116,5 +113,14 @@ public class BasicCharacterController : MonoBehaviour
     {
         health -= damageinbound;
         UI.Instance.UpdateHealth((int)health);
+        if (health <= 0 && !IsDead)
+        {
+            IsDead = true;
+            GetComponentInChildren<DeathScaler>().Died();
+            this.enabled = false;
+            rb.gravityScale = 0;
+            rb.velocity = new Vector2(0, 0);
+            anim.SetTrigger("PlayerDead");
+        }
     }
 }
