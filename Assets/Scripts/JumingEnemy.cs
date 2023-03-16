@@ -4,30 +4,30 @@ using UnityEngine;
 
 public class JumingEnemy : MonoBehaviour
 {
-    Rigidbody2D rb;
     public float JumpHeight;
-    public float JumpTime;
-    private bool CanJump = true;
+    public float TimeBetweenJumps;
+    private Rigidbody2D rb;
+    private float time = 0;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void FixedUpdate()
+    // Update is called once per frame
+    void Update()
     {
-        if (CanJump)
+        time += Time.deltaTime;
+        if (time > TimeBetweenJumps)
         {
-            CanJump = false;
-            rb.AddForce(new Vector2(0, JumpHeight));
-            WaitForJump();
-            CanJump = true;
+            Jump();
+            time = 0;
         }
     }
 
-    IEnumerator WaitForJump()
+    void Jump()
     {
-        yield return new WaitForSeconds(JumpTime);
-
+        rb.AddForce(new Vector2(0,JumpHeight));
     }
 }
