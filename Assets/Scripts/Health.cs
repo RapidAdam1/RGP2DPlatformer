@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
     private int HeartsCount;
-    private int P_Health = 5;
+    private int P_Health = 10;
     public Sprite HeartFull;
     public Sprite HeartEmpty;
     // Start is called before the first frame update
@@ -19,7 +20,7 @@ public class Health : MonoBehaviour
     {
         for(int i = 0; i < HeartsCount ; i++)
         {
-            SpriteRenderer Pic = transform.GetChild(i).GetComponent<SpriteRenderer>();
+            Image Pic = transform.GetChild(i).GetComponent<Image>();
             if (i < P_Health)
             {
                 Pic.sprite = HeartFull;

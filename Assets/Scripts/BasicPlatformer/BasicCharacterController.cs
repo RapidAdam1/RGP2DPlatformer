@@ -12,11 +12,11 @@ using System.Collections;
 public class BasicCharacterController : MonoBehaviour
 {
     protected bool facingRight = true;
-    protected bool jumped;
     protected bool IsCrouching = false;
     public float speed = 5.0f;
     public float jumpForce = 1000;
 
+    public bool jumped;
     private float horizInput;
     private Animator anim;
     private int health = 10;

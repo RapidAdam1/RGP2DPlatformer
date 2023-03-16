@@ -4,6 +4,7 @@ using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class DoorScript : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class DoorScript : MonoBehaviour
     private SpriteRenderer doorlock;
     protected GameObject self;
     private int ChildrenCount;
+    public string Scene;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +35,13 @@ public class DoorScript : MonoBehaviour
         else if (!AllButtonsActive)
         {
             DoorClose();   
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player" && AllButtonsActive)
+        { 
+            SceneManager.LoadScene(Scene);
         }
     }
 
