@@ -69,8 +69,13 @@ public class BasicCharacterController : MonoBehaviour
     {
         //Get Player input 
         horizInput = Input.GetAxis("Horizontal");
+
+        if (horizInput != 0)
+        {
         //Move Character
         rb.velocity = new Vector2(horizInput * speed * Time.fixedDeltaTime, rb.velocity.y);
+
+        }
 
         // Detect if character sprite needs flipping
         if (horizInput > 0 && !facingRight)

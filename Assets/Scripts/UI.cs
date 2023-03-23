@@ -12,7 +12,6 @@ public class UI : MonoBehaviour
     {
         if (Instance == null)
         {
-            DontDestroyOnLoad(gameObject);
             Instance = this;
         }
         else if (Instance != this)

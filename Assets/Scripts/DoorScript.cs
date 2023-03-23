@@ -37,10 +37,10 @@ public class DoorScript : MonoBehaviour
             DoorClose();   
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && AllButtonsActive)
-        { 
+        if (collision.tag == "Player" && AllButtonsActive && Input.GetKey(KeyCode.Space))
+        {
             SceneManager.LoadScene(Scene);
         }
     }
