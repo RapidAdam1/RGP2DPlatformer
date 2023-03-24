@@ -33,7 +33,7 @@ public class UI : MonoBehaviour
 
     public void UpdateCoins(int Coins)
     {
-      CoinText.text = "Coins: " + Coins.ToString();
+      CoinText.text = "Gems: " + Coins.ToString();
     }
 
     public void UpdateHealth(int Health)

@@ -32,10 +32,6 @@ public class BobMovement : MonoBehaviour
         if (facingRight == false) { Flip(); }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
 
     void OnTriggerExit2D(Collider2D collision)
     {
@@ -44,10 +40,12 @@ public class BobMovement : MonoBehaviour
             if(horizInput == 1)
             {
                 horizInput = -1;
+                rb.velocity = Vector2.zero;
             }
             else
             {
                 horizInput = 1;
+                rb.velocity = Vector2.zero;
             }
             Flip(); 
         }
@@ -65,6 +63,7 @@ public class BobMovement : MonoBehaviour
             else
             {
                 collision.rigidbody.AddForce(new Vector2 (650, 500));
+                collision.transform.GetComponent<BasicCharacterController>().PlayerDamage(1);
             }
         }
     }

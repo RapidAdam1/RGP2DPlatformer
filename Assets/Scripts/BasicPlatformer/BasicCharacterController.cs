@@ -19,7 +19,7 @@ public class BasicCharacterController : MonoBehaviour
     public bool jumped;
     private float horizInput;
     private Animator anim;
-    private int health = 10;
+    private int health = 5;
     private bool IsDead;
 
     public Transform groundedCheckStart;

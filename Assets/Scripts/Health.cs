@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Health : MonoBehaviour
 {
     private int HeartsCount;
-    private int P_Health = 10;
+    private int P_Health = 5;
     public Sprite HeartFull;
     public Sprite HeartEmpty;
     // Start is called before the first frame update

@@ -39,7 +39,7 @@ public class DoorScript : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && AllButtonsActive && Input.GetKey(KeyCode.Space))
+        if (collision.tag == "Player" && AllButtonsActive && Input.GetKey(KeyCode.E))
         {
             SceneManager.LoadScene(Scene);
         }

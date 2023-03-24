@@ -7,6 +7,7 @@ public class Lever : MonoBehaviour
     private SpriteRenderer sr;
     public bool Active;
     private bool PlayerTouching = false;
+    public bool Flip =false;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,14 +39,8 @@ public class Lever : MonoBehaviour
 
     void ToggleLever()
     {
-        if (Active)
-        {
-            Active = false;
-        }
-        else 
-        { 
-            Active = true; 
-        }
+        Active = !Active;
+        sr.flipX =!sr.flipX;
         WaitTime();
     }
     public  IEnumerator WaitTime()
