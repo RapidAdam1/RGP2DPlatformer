@@ -8,9 +8,14 @@ public class KillVolume : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        bool IsBox = collision.GetComponent<PushableBox>();
         if (collision.gameObject.tag == "Player")
         {
             collision.transform.position = respawnPoint.position;
+        }
+        else if (IsBox)
+        {
+            collision.GetComponent<PushableBox>().RespawnBox();
         }
     }
 }
